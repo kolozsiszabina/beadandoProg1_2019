@@ -1,0 +1,24 @@
+---Írj egy programot, ami parancssori argumentumként kap egy prímszámot és egy txt
+fájlba beleírja az összes olyan 5000 és 10000 közötti számot, ami osztható a megadott
+számmal, de nem osztható a nála kisebb egynél nagyobb számokkal.---
+
+import sys
+szam=int(sys.argv[1])
+fajl=open(sys.argv[2], mode='w')
+lista=[]
+lista1=[]
+lista2=[]
+for i in range(5000,10001):
+    if i%szam==0:
+        lista.append(int(i))
+
+for i in range(2,szam):
+   # print(i)
+    for j in lista:
+        if j%i==0 and j not in lista1:
+            lista1.append(int(j))
+
+for i in lista:
+    if i not in lista1:
+        lista2.append((i))
+fajl.write(str(lista2))
